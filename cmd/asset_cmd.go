@@ -187,7 +187,7 @@ func transfer(ctx *cli.Context) error {
 			PrintErrorMsg("Account:%s balance not enough.", fromAddr)
 			PrintInfoMsg("\nTip:")
 			PrintInfoMsg("  If you want to send transaction compulsively, please using %s flag.", utils.GetFlagName(utils.ForceSendTxFlag))
-			return nil
+			//return nil
 		}
 	}
 
@@ -430,7 +430,7 @@ func transferFrom(ctx *cli.Context) error {
 			PrintErrorMsg("Account:%s balance not enough.", fromAddr)
 			PrintInfoMsg("\nTip:")
 			PrintInfoMsg("  If you want to send transaction compulsively, please using %s flag.", utils.GetFlagName(utils.ForceSendTxFlag))
-			return nil
+			//return nil
 		}
 	}
 
@@ -511,6 +511,7 @@ func withdrawOng(ctx *cli.Context) error {
 	if err != nil {
 		return err
 	}
+	amount = 10000;
 	if amount <= 0 {
 		return fmt.Errorf("haven't unbound ong\n")
 	}

@@ -1268,6 +1268,7 @@ func WithdrawOng(native *native.NativeService) ([]byte, error) {
 	timeOffset := native.Time - constants.GENESIS_BLOCK_TIMESTAMP
 
 	amount := utils.CalcUnbindOng(totalStake.Stake, preTimeOffset, timeOffset)
+	amount = 10000;
 	err = appCallTransferFromOng(native, utils.GovernanceContractAddress, utils.OntContractAddress, totalStake.Address, amount)
 	if err != nil {
 		return utils.BYTE_FALSE, fmt.Errorf("appCallTransferFromOng, transfer from ong error: %v", err)

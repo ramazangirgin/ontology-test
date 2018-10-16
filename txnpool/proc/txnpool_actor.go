@@ -105,11 +105,13 @@ func preExecCheck(txn *tx.Transaction) (bool, string) {
 		return false, fmt.Sprintf("gasPrice %d preExec gasLimit %d overflow",
 			txn.GasPrice, result.Gas)
 	}
+
 	if !isBalanceEnough(txn.Payer, gas) {
 		log.Debugf("preExecCheck: transactor %s has no balance enough to cover gas cost %d",
 			txn.Payer.ToHexString(), gas)
-		return false, fmt.Sprintf("transactor %s has no balance enough to cover gas cost %d",
+		/*return false, fmt.Sprintf("transactor %s has no balance enough to cover gas cost %d",
 			txn.Payer.ToHexString(), gas)
+		*/
 	}
 	return true, ""
 }

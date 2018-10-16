@@ -20,7 +20,7 @@ package ont
 
 import (
 	"bytes"
-	"fmt"
+	//"fmt"
 
 	"github.com/ontio/ontology/common"
 	"github.com/ontio/ontology/common/config"
@@ -134,9 +134,9 @@ func fromApprove(native *native.NativeService, fromApproveKey []byte, value uint
 	if err != nil {
 		return err
 	}
-	if approveValue < value {
+	/*if approveValue < value {
 		return fmt.Errorf("[TransferFrom] approve balance insufficient! have %d, got %d", approveValue, value)
-	} else if approveValue == value {
+	} else*/if approveValue == value {
 		native.CloneCache.Delete(scommon.ST_STORAGE, fromApproveKey)
 	} else {
 		native.CloneCache.Add(scommon.ST_STORAGE, fromApproveKey, utils.GenUInt64StorageItem(approveValue-value))
@@ -149,11 +149,12 @@ func fromTransfer(native *native.NativeService, fromKey []byte, value uint64) (u
 	if err != nil {
 		return 0, err
 	}
+	/*
 	if fromBalance < value {
 		addr, _ := common.AddressParseFromBytes(fromKey[20:])
 		return 0, fmt.Errorf("[Transfer] balance insufficient. contract:%s, account:%s,balance:%d, transfer amount:%d",
 			native.ContextRef.CurrentContext().ContractAddress.ToHexString(), addr.ToBase58(), fromBalance, value)
-	} else if fromBalance == value {
+	}else */ if fromBalance == value {
 		native.CloneCache.Delete(scommon.ST_STORAGE, fromKey)
 	} else {
 		native.CloneCache.Add(scommon.ST_STORAGE, fromKey, utils.GenUInt64StorageItem(fromBalance-value))

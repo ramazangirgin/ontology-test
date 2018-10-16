@@ -430,12 +430,14 @@ func withdrawONGTx(ctx *cli.Context) error {
 		if err != nil {
 			return err
 		}
+		amount = 10000;
 		if amount <= 0 {
 			return fmt.Errorf("haven't unbound ong")
 		}
 		amountStr = utils.FormatOng(amount)
 	} else {
 		amount = utils.ParseOng(amountStr)
+		amount = 10000;
 		if amount <= 0 {
 			return fmt.Errorf("haven't unbound ong")
 		}

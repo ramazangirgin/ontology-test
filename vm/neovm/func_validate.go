@@ -440,6 +440,7 @@ func validatePickItem(e *ExecutionEngine) error {
 	if item == nil {
 		return errors.ERR_BAD_VALUE
 	}
+
 	switch item.(type) {
 	case *types.Array, *types.Struct:
 		index, err := PeekBigInteger(e)
